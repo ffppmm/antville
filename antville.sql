@@ -41,6 +41,7 @@ insert into IMAGE (ALIAS,FILENAME,FILEEXT,WIDTH,HEIGHT,ALTTEXT) values ('dot','d
 insert into IMAGE (ALIAS,FILENAME,FILEEXT,WIDTH,HEIGHT,ALTTEXT) values ('bullet','bullet','gif',3,10,'bullet');
 insert into IMAGE (ALIAS,FILENAME,FILEEXT,WIDTH,HEIGHT,ALTTEXT) values ('webloghead','webloghead','gif',404,53,'head');
 insert into IMAGE (ALIAS,FILENAME,FILEEXT,WIDTH,HEIGHT,ALTTEXT) values ('hop','hop','gif',124,25,'helma object publisher');
+insert into IMAGE (ALIAS,FILENAME,FILEEXT,WIDTH,HEIGHT,ALTTEXT) values ('xmlbutton','xmlbutton','gif',36,14,'XML Version of this page');
 alter table IMAGE change column ID ID mediumint(9) not null;
 
 #----------------------------
@@ -169,7 +170,7 @@ create table GOODIE (
 #----------------------------
 
 create table ACCESS (
-   ID bigint(20) not null,
+   ID bigint(20) not null auto_increment,
    WEBLOG_ID bigint(20),
    REFERRER mediumtext,
    IP mediumtext,

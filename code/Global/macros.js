@@ -139,7 +139,7 @@ function linkedpath_macro (param) {
    res.write(param.prefix);
    var separator = param.separator;
    if (!separator)
-       separator = "&gt; ";
+       separator = " &gt; ";
    var title = "Home";
    for (var i=1; i<path.length-1; i++) {
        title = path[i].getNavigationName();
@@ -149,4 +149,28 @@ function linkedpath_macro (param) {
    title = path[path.length-1].getNavigationName();
    res.write (title);
    res.write(param.suffix);
+}
+
+
+function poll_macro(param) {
+	var parts = param.id.split("/");
+	if (parts.length == 2) {
+		var blog = root.get(parts[0]);
+		var poll = blog.polls.get(parts[1]);
+	}
+	else {
+		var blog = path.weblog;
+		var poll = blog.polls.get(param.id);
+	}
+	if (!poll)
+		return("[poll id " + param.id + " does not exist.]");
+	var deny = poll.isVoteDenied(user);
+	if (deny || param.as == "link")
+		return('<a href="' + poll.href() + '">' + poll.question + '</a>');
+	if (poll.closed || param.as == "results")
+	  poll.renderSkin("results");
+	else {
+		res.data.action = poll.href("main");
+		poll.renderSkin("main");
+	}
 }

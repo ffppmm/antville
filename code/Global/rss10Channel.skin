@@ -21,20 +21,9 @@
     <sy:updatePeriod>hourly</sy:updatePeriod>
     <sy:updateFrequency>1</sy:updateFrequency>
     <sy:updateBase><% param.updateBase %></sy:updateBase>
-
-    <!-- image rdf:resource="<% param.image %>" / -->
-
-    <items>
-      <rdf:Seq>
-<% param.resources %>
-      </rdf:Seq>
-    </items>
-
-    <!-- textinput rdf:resource="<% param.textInput %>" / -->
-
   </channel>
 
+<% param.textinput %>
 <% param.items %>
-<% param.textInput %>
 
 </rdf:RDF>
